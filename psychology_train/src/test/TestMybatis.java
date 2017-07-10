@@ -1,4 +1,4 @@
-package sy.test;
+
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class TestMybatis {
 
 	@Test
 	public void test1() {
-		User u = userService.getUserById("1");
+		User u = userService.getUserById(1);
 		logger.info("result............"+JSON.toJSONStringWithDateFormat(u, "yyyy-MM-dd HH:mm:ss"));
 	}
 

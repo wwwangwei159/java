@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserServiceI {
 		this.userMapper = userMapper;
 	}
 
-	public User getUserById(String id) {
+	public User getUserById(Integer id) {
 		// TODO Auto-generated method stub
 		return userMapper.selectByPrimaryKey(id);
 	}

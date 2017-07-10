@@ -6,7 +6,7 @@ import sy.model.User;
 
 public interface UserServiceI {
 
-	public User getUserById(String id);
+	public User getUserById(Integer id);
 
 	List<User> getAll();
 

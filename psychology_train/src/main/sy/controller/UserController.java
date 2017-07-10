@@ -26,14 +26,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value="/{id}/showUser",produces = "application/json;charset=UTF-8")
-	public String showUserByJason(@PathVariable String id, HttpServletRequest request) {
+	public String showUserByJason(@PathVariable Integer id, HttpServletRequest request) {
 		User u = userService.getUserById(id);
 		request.setAttribute("user", u);
 		return "showUser";
 	}
 	
 	@RequestMapping("/{id}/showUser")
-	public String showUser(@PathVariable String id, HttpServletRequest request) {
+	public String showUser(@PathVariable Integer id, HttpServletRequest request) {
 		User u = userService.getUserById(id);
 		request.setAttribute("user", u);
 		return "showUser";
