@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.ReserveCourseMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.ReserveCourse" >
+    <id column="reserve_id" property="reserveId" jdbcType="VARCHAR" />
+    <result column="reserve_name" property="reserveName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="point_datetime" property="pointDatetime" jdbcType="TIMESTAMP" />
+    <result column="agree_datetime" property="agreeDatetime" jdbcType="TIMESTAMP" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reserve_id, reserve_name, user_id, point_datetime, agree_datetime, mobile, email, 
+    phone, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reserve_course
+    where reserve_id = #{reserveId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from reserve_course
+    where reserve_id = #{reserveId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.ReserveCourse" >
+    insert into reserve_course (reserve_id, reserve_name, user_id, 
+      point_datetime, agree_datetime, mobile, 
+      email, phone, status
+      )
+    values (#{reserveId,jdbcType=VARCHAR}, #{reserveName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{pointDatetime,jdbcType=TIMESTAMP}, #{agreeDatetime,jdbcType=TIMESTAMP}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.ReserveCourse" >
+    insert into reserve_course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reserveId != null" >
+        reserve_id,
+      </if>
+      <if test="reserveName != null" >
+        reserve_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="pointDatetime != null" >
+        point_datetime,
+      </if>
+      <if test="agreeDatetime != null" >
+        agree_datetime,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reserveId != null" >
+        #{reserveId,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveName != null" >
+        #{reserveName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDatetime != null" >
+        #{pointDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agreeDatetime != null" >
+        #{agreeDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.ReserveCourse" >
+    update reserve_course
+    <set >
+      <if test="reserveName != null" >
+        reserve_name = #{reserveName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDatetime != null" >
+        point_datetime = #{pointDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agreeDatetime != null" >
+        agree_datetime = #{agreeDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reserve_id = #{reserveId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.ReserveCourse" >
+    update reserve_course
+    set reserve_name = #{reserveName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      point_datetime = #{pointDatetime,jdbcType=TIMESTAMP},
+      agree_datetime = #{agreeDatetime,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where reserve_id = #{reserveId,jdbcType=VARCHAR}
+  </update>
+</mapper>

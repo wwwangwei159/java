@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.QnaQuestionMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.QnaQuestion" >
+    <id column="qna_qid" property="qnaQid" jdbcType="VARCHAR" />
+    <result column="qna_id" property="qnaId" jdbcType="VARCHAR" />
+    <result column="q_id" property="qId" jdbcType="VARCHAR" />
+    <result column="q_seq" property="qSeq" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qna_qid, qna_id, q_id, q_seq
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from qna_question
+    where qna_qid = #{qnaQid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from qna_question
+    where qna_qid = #{qnaQid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.QnaQuestion" >
+    insert into qna_question (qna_qid, qna_id, q_id, 
+      q_seq)
+    values (#{qnaQid,jdbcType=VARCHAR}, #{qnaId,jdbcType=VARCHAR}, #{qId,jdbcType=VARCHAR}, 
+      #{qSeq,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.QnaQuestion" >
+    insert into qna_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qnaQid != null" >
+        qna_qid,
+      </if>
+      <if test="qnaId != null" >
+        qna_id,
+      </if>
+      <if test="qId != null" >
+        q_id,
+      </if>
+      <if test="qSeq != null" >
+        q_seq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qnaQid != null" >
+        #{qnaQid,jdbcType=VARCHAR},
+      </if>
+      <if test="qnaId != null" >
+        #{qnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="qId != null" >
+        #{qId,jdbcType=VARCHAR},
+      </if>
+      <if test="qSeq != null" >
+        #{qSeq,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.QnaQuestion" >
+    update qna_question
+    <set >
+      <if test="qnaId != null" >
+        qna_id = #{qnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="qId != null" >
+        q_id = #{qId,jdbcType=VARCHAR},
+      </if>
+      <if test="qSeq != null" >
+        q_seq = #{qSeq,jdbcType=INTEGER},
+      </if>
+    </set>
+    where qna_qid = #{qnaQid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.QnaQuestion" >
+    update qna_question
+    set qna_id = #{qnaId,jdbcType=VARCHAR},
+      q_id = #{qId,jdbcType=VARCHAR},
+      q_seq = #{qSeq,jdbcType=INTEGER}
+    where qna_qid = #{qnaQid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.QuestionnaireMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.Questionnaire" >
+    <id column="qna_id" property="qnaId" jdbcType="VARCHAR" />
+    <result column="qna_name" property="qnaName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="publish_datetime" property="publishDatetime" jdbcType="TIMESTAMP" />
+    <result column="qna_type" property="qnaType" jdbcType="VARCHAR" />
+    <result column="qna_status" property="qnaStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qna_id, qna_name, user_id, create_datetime, publish_datetime, qna_type, qna_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from questionnaire
+    where qna_id = #{qnaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from questionnaire
+    where qna_id = #{qnaId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.Questionnaire" >
+    insert into questionnaire (qna_id, qna_name, user_id, 
+      create_datetime, publish_datetime, qna_type, 
+      qna_status)
+    values (#{qnaId,jdbcType=VARCHAR}, #{qnaName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{createDatetime,jdbcType=TIMESTAMP}, #{publishDatetime,jdbcType=TIMESTAMP}, #{qnaType,jdbcType=VARCHAR}, 
+      #{qnaStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.Questionnaire" >
+    insert into questionnaire
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qnaId != null" >
+        qna_id,
+      </if>
+      <if test="qnaName != null" >
+        qna_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="publishDatetime != null" >
+        publish_datetime,
+      </if>
+      <if test="qnaType != null" >
+        qna_type,
+      </if>
+      <if test="qnaStatus != null" >
+        qna_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qnaId != null" >
+        #{qnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="qnaName != null" >
+        #{qnaName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishDatetime != null" >
+        #{publishDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qnaType != null" >
+        #{qnaType,jdbcType=VARCHAR},
+      </if>
+      <if test="qnaStatus != null" >
+        #{qnaStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.Questionnaire" >
+    update questionnaire
+    <set >
+      <if test="qnaName != null" >
+        qna_name = #{qnaName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishDatetime != null" >
+        publish_datetime = #{publishDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qnaType != null" >
+        qna_type = #{qnaType,jdbcType=VARCHAR},
+      </if>
+      <if test="qnaStatus != null" >
+        qna_status = #{qnaStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where qna_id = #{qnaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.Questionnaire" >
+    update questionnaire
+    set qna_name = #{qnaName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      publish_datetime = #{publishDatetime,jdbcType=TIMESTAMP},
+      qna_type = #{qnaType,jdbcType=VARCHAR},
+      qna_status = #{qnaStatus,jdbcType=VARCHAR}
+    where qna_id = #{qnaId,jdbcType=VARCHAR}
+  </update>
+</mapper>

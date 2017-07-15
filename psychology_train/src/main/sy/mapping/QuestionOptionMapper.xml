@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.QuestionOptionMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.QuestionOption" >
+    <id column="q_op_id" property="qOpId" jdbcType="VARCHAR" />
+    <result column="q_op_seq" property="qOpSeq" jdbcType="INTEGER" />
+    <result column="q_op_name" property="qOpName" jdbcType="VARCHAR" />
+    <result column="q_op_score" property="qOpScore" jdbcType="INTEGER" />
+    <result column="q_id" property="qId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    q_op_id, q_op_seq, q_op_name, q_op_score, q_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from question_option
+    where q_op_id = #{qOpId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from question_option
+    where q_op_id = #{qOpId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.QuestionOption" >
+    insert into question_option (q_op_id, q_op_seq, q_op_name, 
+      q_op_score, q_id)
+    values (#{qOpId,jdbcType=VARCHAR}, #{qOpSeq,jdbcType=INTEGER}, #{qOpName,jdbcType=VARCHAR}, 
+      #{qOpScore,jdbcType=INTEGER}, #{qId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.QuestionOption" >
+    insert into question_option
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qOpId != null" >
+        q_op_id,
+      </if>
+      <if test="qOpSeq != null" >
+        q_op_seq,
+      </if>
+      <if test="qOpName != null" >
+        q_op_name,
+      </if>
+      <if test="qOpScore != null" >
+        q_op_score,
+      </if>
+      <if test="qId != null" >
+        q_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qOpId != null" >
+        #{qOpId,jdbcType=VARCHAR},
+      </if>
+      <if test="qOpSeq != null" >
+        #{qOpSeq,jdbcType=INTEGER},
+      </if>
+      <if test="qOpName != null" >
+        #{qOpName,jdbcType=VARCHAR},
+      </if>
+      <if test="qOpScore != null" >
+        #{qOpScore,jdbcType=INTEGER},
+      </if>
+      <if test="qId != null" >
+        #{qId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.QuestionOption" >
+    update question_option
+    <set >
+      <if test="qOpSeq != null" >
+        q_op_seq = #{qOpSeq,jdbcType=INTEGER},
+      </if>
+      <if test="qOpName != null" >
+        q_op_name = #{qOpName,jdbcType=VARCHAR},
+      </if>
+      <if test="qOpScore != null" >
+        q_op_score = #{qOpScore,jdbcType=INTEGER},
+      </if>
+      <if test="qId != null" >
+        q_id = #{qId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where q_op_id = #{qOpId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.QuestionOption" >
+    update question_option
+    set q_op_seq = #{qOpSeq,jdbcType=INTEGER},
+      q_op_name = #{qOpName,jdbcType=VARCHAR},
+      q_op_score = #{qOpScore,jdbcType=INTEGER},
+      q_id = #{qId,jdbcType=VARCHAR}
+    where q_op_id = #{qOpId,jdbcType=VARCHAR}
+  </update>
+</mapper>

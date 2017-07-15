@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.Question" >
+    <id column="q_id" property="qId" jdbcType="VARCHAR" />
+    <result column="q_name" property="qName" jdbcType="VARCHAR" />
+    <result column="q_type" property="qType" jdbcType="VARCHAR" />
+    <result column="q_factor" property="qFactor" jdbcType="VARCHAR" />
+    <result column="q_status" property="qStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    q_id, q_name, q_type, q_factor, q_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where q_id = #{qId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from question
+    where q_id = #{qId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.Question" >
+    insert into question (q_id, q_name, q_type, 
+      q_factor, q_status)
+    values (#{qId,jdbcType=VARCHAR}, #{qName,jdbcType=VARCHAR}, #{qType,jdbcType=VARCHAR}, 
+      #{qFactor,jdbcType=VARCHAR}, #{qStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.Question" >
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        q_id,
+      </if>
+      <if test="qName != null" >
+        q_name,
+      </if>
+      <if test="qType != null" >
+        q_type,
+      </if>
+      <if test="qFactor != null" >
+        q_factor,
+      </if>
+      <if test="qStatus != null" >
+        q_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        #{qId,jdbcType=VARCHAR},
+      </if>
+      <if test="qName != null" >
+        #{qName,jdbcType=VARCHAR},
+      </if>
+      <if test="qType != null" >
+        #{qType,jdbcType=VARCHAR},
+      </if>
+      <if test="qFactor != null" >
+        #{qFactor,jdbcType=VARCHAR},
+      </if>
+      <if test="qStatus != null" >
+        #{qStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.Question" >
+    update question
+    <set >
+      <if test="qName != null" >
+        q_name = #{qName,jdbcType=VARCHAR},
+      </if>
+      <if test="qType != null" >
+        q_type = #{qType,jdbcType=VARCHAR},
+      </if>
+      <if test="qFactor != null" >
+        q_factor = #{qFactor,jdbcType=VARCHAR},
+      </if>
+      <if test="qStatus != null" >
+        q_status = #{qStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where q_id = #{qId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.Question" >
+    update question
+    set q_name = #{qName,jdbcType=VARCHAR},
+      q_type = #{qType,jdbcType=VARCHAR},
+      q_factor = #{qFactor,jdbcType=VARCHAR},
+      q_status = #{qStatus,jdbcType=VARCHAR}
+    where q_id = #{qId,jdbcType=VARCHAR}
+  </update>
+</mapper>

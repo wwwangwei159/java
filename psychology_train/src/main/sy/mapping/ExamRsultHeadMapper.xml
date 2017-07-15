@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.ExamRsultHeadMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.ExamRsultHead" >
+    <id column="exam_id" property="examId" jdbcType="VARCHAR" />
+    <result column="qna_id" property="qnaId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="exam_score" property="examScore" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    exam_id, qna_id, user_id, exam_score
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam_result_head
+    where exam_id = #{examId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from exam_result_head
+    where exam_id = #{examId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.ExamRsultHead" >
+    insert into exam_result_head (exam_id, qna_id, user_id, 
+      exam_score)
+    values (#{examId,jdbcType=VARCHAR}, #{qnaId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{examScore,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.ExamRsultHead" >
+    insert into exam_result_head
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="examId != null" >
+        exam_id,
+      </if>
+      <if test="qnaId != null" >
+        qna_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="examScore != null" >
+        exam_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="examId != null" >
+        #{examId,jdbcType=VARCHAR},
+      </if>
+      <if test="qnaId != null" >
+        #{qnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="examScore != null" >
+        #{examScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.ExamRsultHead" >
+    update exam_result_head
+    <set >
+      <if test="qnaId != null" >
+        qna_id = #{qnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="examScore != null" >
+        exam_score = #{examScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where exam_id = #{examId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.ExamRsultHead" >
+    update exam_result_head
+    set qna_id = #{qnaId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      exam_score = #{examScore,jdbcType=INTEGER}
+    where exam_id = #{examId,jdbcType=VARCHAR}
+  </update>
+</mapper>

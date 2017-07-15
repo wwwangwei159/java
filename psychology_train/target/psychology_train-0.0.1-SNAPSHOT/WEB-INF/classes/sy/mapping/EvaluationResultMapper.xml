@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.EvaluationResultMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.EvaluationResult" >
+    <id column="result_id" property="resultId" jdbcType="VARCHAR" />
+    <result column="qna_id" property="qnaId" jdbcType="VARCHAR" />
+    <result column="min_score_interval" property="minScoreInterval" jdbcType="INTEGER" />
+    <result column="max_score_interval" property="maxScoreInterval" jdbcType="INTEGER" />
+    <result column="result_message" property="resultMessage" jdbcType="VARCHAR" />
+    <result column="ressult_seq" property="ressultSeq" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    result_id, qna_id, min_score_interval, max_score_interval, result_message, ressult_seq
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from evaluation_result
+    where result_id = #{resultId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from evaluation_result
+    where result_id = #{resultId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.EvaluationResult" >
+    insert into evaluation_result (result_id, qna_id, min_score_interval, 
+      max_score_interval, result_message, ressult_seq
+      )
+    values (#{resultId,jdbcType=VARCHAR}, #{qnaId,jdbcType=VARCHAR}, #{minScoreInterval,jdbcType=INTEGER}, 
+      #{maxScoreInterval,jdbcType=INTEGER}, #{resultMessage,jdbcType=VARCHAR}, #{ressultSeq,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.EvaluationResult" >
+    insert into evaluation_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resultId != null" >
+        result_id,
+      </if>
+      <if test="qnaId != null" >
+        qna_id,
+      </if>
+      <if test="minScoreInterval != null" >
+        min_score_interval,
+      </if>
+      <if test="maxScoreInterval != null" >
+        max_score_interval,
+      </if>
+      <if test="resultMessage != null" >
+        result_message,
+      </if>
+      <if test="ressultSeq != null" >
+        ressult_seq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resultId != null" >
+        #{resultId,jdbcType=VARCHAR},
+      </if>
+      <if test="qnaId != null" >
+        #{qnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="minScoreInterval != null" >
+        #{minScoreInterval,jdbcType=INTEGER},
+      </if>
+      <if test="maxScoreInterval != null" >
+        #{maxScoreInterval,jdbcType=INTEGER},
+      </if>
+      <if test="resultMessage != null" >
+        #{resultMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="ressultSeq != null" >
+        #{ressultSeq,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.EvaluationResult" >
+    update evaluation_result
+    <set >
+      <if test="qnaId != null" >
+        qna_id = #{qnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="minScoreInterval != null" >
+        min_score_interval = #{minScoreInterval,jdbcType=INTEGER},
+      </if>
+      <if test="maxScoreInterval != null" >
+        max_score_interval = #{maxScoreInterval,jdbcType=INTEGER},
+      </if>
+      <if test="resultMessage != null" >
+        result_message = #{resultMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="ressultSeq != null" >
+        ressult_seq = #{ressultSeq,jdbcType=INTEGER},
+      </if>
+    </set>
+    where result_id = #{resultId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.EvaluationResult" >
+    update evaluation_result
+    set qna_id = #{qnaId,jdbcType=VARCHAR},
+      min_score_interval = #{minScoreInterval,jdbcType=INTEGER},
+      max_score_interval = #{maxScoreInterval,jdbcType=INTEGER},
+      result_message = #{resultMessage,jdbcType=VARCHAR},
+      ressult_seq = #{ressultSeq,jdbcType=INTEGER}
+    where result_id = #{resultId,jdbcType=VARCHAR}
+  </update>
+</mapper>
