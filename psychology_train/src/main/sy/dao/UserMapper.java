@@ -1,25 +1,17 @@
 package sy.dao;
 
-import java.util.List;
-
 import sy.model.User;
 
 public interface UserMapper {
-	int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String userId);
 
-	int insert(User record);
+    int insert(User record);
 
-	int insertSelective(User record);
+    int insertSelective(User record);
 
-	User selectByPrimaryKey(Integer id);
+    User selectByPrimaryKey(String userId);
 
-	int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(User record);
 
-	int updateByPrimaryKey(User record);
-
-	List<User> getAll();
-
-	List<User> getAll2();
-
-	List<User> getAll3();
+    int updateByPrimaryKey(User record);
 }

@@ -1,78 +1,112 @@
-CREATE TABLE `m_user` (
-  `id` int NOT NULL,
-  `name` varchar(80) DEFAULT NULL,
-  `pwd` varchar(80) DEFAULT NULL,
-  `create_datetime` datetime DEFAULT NULL,
-  `updaet_datetime` datetime DEFAULT NULL,
-	`age` INT DEFAULT NULL,
-	`sex` varchar(10) DEFAULT NULL,
-	`mobile` varchar(80) DEFAULT NULL,
-	`email` varchar(80) DEFAULT NULL,
-	`phone` varchar(80) DEFAULT NULL,
-  UNIQUE KEY `user_id1` (`ID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `leave_message` (
-  `id` int NOT NULL,
-  `name` varchar(80) DEFAULT NULL,
-  `userid` varchar(80) DEFAULT NULL,
-  `leave_datetime` datetime DEFAULT NULL,
-  `message` varchar(1024) DEFAULT NULL,
-  `mobile` varchar(80) DEFAULT NULL,
-	`email` varchar(80) DEFAULT NULL,
-	`phone` varchar(80) DEFAULT NULL,
-	`status` varchar(80) DEFAULT NULL,
-  UNIQUE KEY `leave_messageid` (`ID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `queue` (
-  `id` int NOT NULL,
-  `name` varchar(80) DEFAULT NULL,
-  `userid` varchar(80) DEFAULT NULL,
-  `point_datetime` datetime DEFAULT NULL,
-  `agree_datetime` datetime DEFAULT NULL,
-	`mobile` varchar(80) DEFAULT NULL,
-	`email` varchar(80) DEFAULT NULL,
-	`phone` varchar(80) DEFAULT NULL,
-	`status` varchar(2) DEFAULT NULL,
-  UNIQUE KEY `queueid` (`ID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+#------drop table 
+drop table m_user;
+drop table message_leave;
+drop table reserve_course;
+drop table questionnaire;
+drop table evaluation_result;
+drop table qna_question;
+drop table question;
+drop table question_option;
+drop table exam_result_head;
+drop table exam_result_detail;
 
 
-CREATE TABLE `questionnaire` (
-  `id` int NOT NULL,
-  `name` varchar(256) DEFAULT NULL,
-  `create_userid` varchar(80) DEFAULT NULL,
-  `create_datetime` datetime DEFAULT NULL,
-  `publish_datetime` datetime DEFAULT NULL,
-  `questionnaire_type` varchar(2) DEFAULT NULL,
-  `status` varchar(2) DEFAULT NULL,
-  UNIQUE KEY `questionnaireid` (`ID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE m_user(  #---用户表
+user_id varchar(15) primary key, #----yyyymmddhhmisssss8888
+name varchar(80),
+pwd varchar(80) DEFAULT NULL, 
+create_datetime datetime default null, 
+update_datetime datetime default null,
+age int default null, 
+sex varchar(10) default null,
+mobile varchar(80) default null, 
+email varchar(80) default null,
+phone varchar(80) default null
+);
 
-CREATE TABLE `evaluation_result` (
-  `id` int NOT NULL,
-  `questionnaireid` varchar(256) DEFAULT NULL,
-  `max_score_interval` int NOT NULL,
-  `min_score_interval` int NOT NULL,
-  `result_message` datetime DEFAULT NULL,
-  `num` int NOT NULL,
-  UNIQUE KEY `questionnaireid` (`ID`) USING BTREE
-)
+CREATE TABLE message_leave ( #---留言表
+mess_id varchar(15) primary key,  #----yyyymmddhhmisssss8888
+reserve_name varchar(80) DEFAULT NULL, #---预约人姓名
+user_id varchar(80) DEFAULT NULL,
+leave_datetime datetime DEFAULT NULL,
+message varchar(1024) DEFAULT NULL, #---留言内容
+mobile varchar(80) DEFAULT NULL,
+email varchar(80) DEFAULT NULL,
+phone varchar(80) DEFAULT NULL,
+status varchar(80) DEFAULT NULL
+);
 
-CREATE TABLE `question` (
-  `id` int NOT NULL,
-  `num` int NOT NULL,
-  `name` varchar(512) DEFAULT NULL,
-  `questionnaire_id` varchar(80) DEFAULT NULL,
-  UNIQUE KEY `questionid` (`ID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE reserve_course( #---预约老师表
+reserve_id varchar(15) primary key,  #----yyyymmddhhmisssss8888
+reserve_name varchar(80) DEFAULT NULL, #---预约人姓名
+user_id varchar(80) DEFAULT NULL,
+point_datetime datetime DEFAULT NULL, #---预约人时间
+agree_datetime datetime DEFAULT NULL,
+mobile varchar(80) DEFAULT NULL,
+email varchar(80) DEFAULT NULL,
+phone varchar(80) DEFAULT NULL,
+status varchar(2) DEFAULT NULL
+);
 
-CREATE TABLE `question_option` (
-  `id` int NOT NULL,
-  `num` int NOT NULL,
-  `name` varchar(512) DEFAULT NULL,
-   `score` int NOT NULL,
-  `questionid` varchar(80) DEFAULT NULL,
-  UNIQUE KEY `questionid` (`ID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE questionnaire (
+qna_id varchar(15) primary key,  #---问卷id----yyyymmddhhmisssss888 
+qna_name varchar(256) DEFAULT NULL,#---问卷名称
+user_id varchar(80) DEFAULT NULL,
+create_datetime datetime DEFAULT NULL,
+publish_datetime datetime DEFAULT NULL,
+qna_type varchar(256) DEFAULT NULL,  #---问卷类型
+qna_status varchar(20) DEFAULT NULL   #---问卷类型
+);
+
+CREATE TABLE evaluation_result (  #---问卷总评表
+result_id varchar(15) primary key,       
+qna_id varchar(256) DEFAULT NULL,
+min_score_interval int NOT NULL,   #---问卷区间
+max_score_interval int NOT NULL,   #---问卷区间
+result_message varchar(2048) DEFAULT NULL, #---评定结果
+ressult_seq int NOT NULL
+);
+
+CREATE TABLE qna_question (
+qna_qid varchar(15) primary key,  #---问卷问题 ---yyyymmddhhmisssss888 
+qna_id varchar(80) DEFAULT NULL,  #---问卷id
+q_id varchar(80) DEFAULT NULL,  #---问题id
+q_seq int NOT NULL    #---问卷问题序号
+);
+
+CREATE TABLE question (
+q_id varchar(15) primary key,  #---问题id
+q_name varchar(512) DEFAULT NULL, #---问题名称
+q_type varchar(20) DEFAULT NULL, #---问题类型，单选，多选
+q_factor varchar(50) DEFAULT NULL,  #---问题因子，做分类用
+q_status varchar(20) DEFAULT NULL   #---问题状态
+);
+
+CREATE TABLE question_option (  #---问题选项内容表
+q_op_id varchar(15) primary key,     
+q_op_seq int NOT NULL,
+q_op_name varchar(512) DEFAULT NULL,
+q_op_score int NOT NULL,
+q_id varchar(80) DEFAULT NULL
+);
+
+
+
+CREATE TABLE exam_result_head (  #---答题结果表
+exam_id varchar(15) primary key,  #---答题id     
+qna_id varchar(15) DEFAULT NULL,  #---问卷id
+user_id varchar(15) DEFAULT NULL, #---答题人id
+exam_score int NOT NULL  #---问卷
+);
+
+CREATE TABLE exam_result_detail (  #---答题结果表
+exam_result_id varchar(15) primary key,  #---详细id   
+exam_id varchar(15) DEFAULT NULL,   #---答题id   
+qna_id varchar(15) DEFAULT NULL,  #---问卷id冗余字段
+q_id varchar(15) DEFAULT NULL, #---问题ID
+exam_score int NOT NULL  #---问卷
+);
+
+
+

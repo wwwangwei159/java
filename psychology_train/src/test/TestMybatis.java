@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import sy.model.MessageLeave;
 import sy.model.User;
+import sy.service.MessageLeaveService;
 import sy.service.UserServiceI;
 
 import com.alibaba.fastjson.JSON;
@@ -33,8 +35,17 @@ public class TestMybatis {
 
 	@Test
 	public void test1() {
-		User u = userService.getUserById(1);
+		User u = userService.getUserById("1");
 		logger.info("result............"+JSON.toJSONStringWithDateFormat(u, "yyyy-MM-dd HH:mm:ss"));
+	}
+	
+	@Test
+	public void insertTest1() {
+		User user = new User();
+		user.setUserId("5");
+		user.setName("test name2");
+		int i = userService.insert(user);
+		logger.info("result............"+i);
 	}
 
 	@Test
@@ -54,4 +65,35 @@ public class TestMybatis {
 		List<User> l = userService.getAll3();
 		logger.info(JSON.toJSONStringWithDateFormat(l, "yyyy-MM-dd HH:mm:ss"));
 	}
+	
+	
+	private MessageLeaveService messageService;
+
+	public MessageLeaveService getMessageService() {
+		return messageService;
+	}
+
+	@Autowired
+	public void setMessageService(MessageLeaveService messageService) {
+		this.messageService = messageService;
+	}	
+	
+	
+	@Test
+	public void test6() {
+		MessageLeave mess = messageService.getMessageId("1");
+		logger.info("result............"+JSON.toJSONStringWithDateFormat(mess, "yyyy-MM-dd HH:mm:ss"));
+	}
+	
+	@Test
+	public void insertTest2() {
+		MessageLeave message = new MessageLeave();
+		message.setMessId("1");
+		message.setMobile("11111111233");
+		int i = messageService.insert(message);
+		logger.info("result............"+i);
+	}
+	
+	
+	
 }

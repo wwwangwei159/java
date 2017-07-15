@@ -23,11 +23,7 @@ public class UserServiceImpl implements UserServiceI {
 		this.userMapper = userMapper;
 	}
 
-	public User getUserById(Integer id) {
-		// TODO Auto-generated method stub
-		return userMapper.selectByPrimaryKey(id);
-	}
-
+	
 	public List<User> getAll() {
 		// TODO Auto-generated method stub
 		return null;
@@ -41,6 +37,16 @@ public class UserServiceImpl implements UserServiceI {
 	public List<User> getAll3() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public User getUserById(String id) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByPrimaryKey(id);
+	}
+
+	public int insert(User record) {
+		// TODO Auto-generated method stub
+		return userMapper.insert(record);
 	}
 
 	

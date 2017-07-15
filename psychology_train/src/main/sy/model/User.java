@@ -3,7 +3,7 @@ package sy.model;
 import java.util.Date;
 
 public class User {
-    private Integer id;
+    private String userId;
 
     private String name;
 
@@ -11,7 +11,7 @@ public class User {
 
     private Date createDatetime;
 
-    private Date updaetDatetime;
+    private Date updateDatetime;
 
     private Integer age;
 
@@ -23,12 +23,12 @@ public class User {
 
     private String phone;
 
-    public Integer getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getName() {
@@ -55,12 +55,12 @@ public class User {
         this.createDatetime = createDatetime;
     }
 
-    public Date getUpdaetDatetime() {
-        return updaetDatetime;
+    public Date getUpdateDatetime() {
+        return updateDatetime;
     }
 
-    public void setUpdaetDatetime(Date updaetDatetime) {
-        this.updaetDatetime = updaetDatetime;
+    public void setUpdateDatetime(Date updateDatetime) {
+        this.updateDatetime = updateDatetime;
     }
 
     public Integer getAge() {

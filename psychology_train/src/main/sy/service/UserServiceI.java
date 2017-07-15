@@ -6,7 +6,9 @@ import sy.model.User;
 
 public interface UserServiceI {
 
-	public User getUserById(Integer id);
+	public User getUserById(String id);
+	
+	 int insert(User record);
 
 	List<User> getAll();
 
