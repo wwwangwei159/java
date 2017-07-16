@@ -89,11 +89,8 @@
 		    <version>0.9.5.2</version>  
 		</dependency>
 	</dependencies>
-	<build> 
-	<directory>target</directory>  
-    <outputDirectory>target/classes</outputDirectory>  
-    <finalName>${project.artifactId}</finalName>  
-    <!-- <testOutputDirectory>target/test-classes</testOutputDirectory>   -->
+	<build>
+    <finalName>${project.artifactId}</finalName>
    	 <plugins> 
 	      <plugin> 
 	        <groupId>org.apache.maven.plugins</groupId> 
