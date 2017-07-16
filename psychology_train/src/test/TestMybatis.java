@@ -81,17 +81,28 @@ public class TestMybatis {
 	
 	@Test
 	public void test6() {
-		MessageLeave mess = messageService.getMessageId("1");
+		MessageLeave mess = messageService.getMessageId("3");
 		logger.info("result............"+JSON.toJSONStringWithDateFormat(mess, "yyyy-MM-dd HH:mm:ss"));
+		
+		User u = userService.getUserById("5");
+		logger.info("result............"+JSON.toJSONStringWithDateFormat(u, "yyyy-MM-dd HH:mm:ss"));
 	}
 	
 	@Test
 	public void insertTest2() {
 		MessageLeave message = new MessageLeave();
-		message.setMessId("1");
+		message.setMessId("3");
 		message.setMobile("11111111233");
 		int i = messageService.insert(message);
 		logger.info("result............"+i);
+		
+		User user = new User();
+		user.setUserId("5");
+		user.setName("test name2");
+		int j = userService.insert(user);
+		logger.info("result............"+j);
+		
+		
 	}
 	
 	
