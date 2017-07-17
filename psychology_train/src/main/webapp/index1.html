@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" onclick="queue()">
+                        <a href="#" onclick="reserveCourse()">
                             <div class="panel-footer">
                                 <span class="pull-left">预约</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -153,8 +153,8 @@
          var result = pathName.substr(0,index+1);   
          return result;   
        }  
-       function queue(){
-          window.location.href=getContextPath()+"/queueController/queueIndex.do";
+       function reserveCourse(){
+          window.location.href=getContextPath()+"/reserveCourse/reserveCourseAdd.html";
        }
     </script>
 
