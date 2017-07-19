@@ -49,5 +49,10 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.insert(record);
 	}
 
+	public List<User> getByType(String type) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByType(type);
+	}
+
 	
 }

@@ -1,131 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html >
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
-<head>
 
+<head>
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>预约</title>
+    <%@ include file="/framework/commonjsadmin2.jsp" %>
+    <script>jQuery.noConflict()</script>
+    <!--时间控件样式-->  
+   <link rel="stylesheet" type="text/css" href="${webRoot}/mdatetimer/zepto.mdatetimer.css">
+   
+   
+   <!--时间控件-->  
+   <script src="${webRoot}/mdatetimer/zepto.js"></script>
+   <script src="${webRoot}/mdatetimer/zepto.mdatetimer.js"></script>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../demo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../demo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../demo/dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../demo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+   <script type="text/javascript">
+	
+	</script>
+    <%
+      
+    %>
 </head>
 
-<body>
-
-    <div id="wrapper">
-<div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">自助系统</a>
-            </div>
-        </nav>
-        
-            <!-- /.navbar-header -->
-        <div align="center">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">预约</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <form role="form">
-                                        <div class="form-group">
-                                            <label>姓名</label>
-                                            <input class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>电话</label>
-                                            <input class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>邮箱</label>
-                                            <input class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>预约时间</label>
-                                            <input class="form-control">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>预约老师</label>
-                                            <select multiple class="form-control">
+<body>    
+      <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-3">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">请预约</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form id="form" name="form" action="${webRoot}/reserve/insert.do" method="post" >
+                        		<input class="form-control" type="hidden" placeholder="状态" name="status" value="Active"  autofocus>
+                            <fieldset>
+                            	<div class="form-group">
+                                    <input class="form-control" placeholder="电话" name="phone"  autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="称呼" name="reserveName"  autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <select multiple class="form-control" name="userId">
+                                                <option value="" >请选择您要预约的老师</option>
                                                 <option>1</option>
                                                 <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-default">预约</button>
-                                        <button type="reset" class="btn btn-default">取消</button>
-                                    </form>
+							
+                                    </select>
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
+                                <div class="form-group">
+                                    <input id="picktimeReserve" class="form-control" name="pointDatetime" placeholder="预约时间" type="text" readonly/>
+                                    
+                                </div>
+                                <div class="col-md-offset-4">
+	                                <button class="btn btn-primary btn-lg btn-success " type="submit">提交</button> 
+	                                <button class="btn btn-primary btn-lg btn-info" type="button">返回</button>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
-                    <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
+    <script>
+$(function(){
 
-    <!-- jQuery -->
-    <script src="../demo/vendor/jquery/jquery.min.js"></script>
+	var config = {
+		mode : 2, //时间选择器模式：1：年月日，2：年月日时分（24小时），3：年月日时分（12小时），4：年月日时分秒。默认：1
+		format : 2, //时间格式化方式：1：2015年06月10日 17时30分46秒，2：2015-05-10  17:30:46。默认：2
+		years : [2017,2018,2019,2020,2021,2022,2023], //年份数组
+		nowbtn : false, //是否显示现在按钮
+		onOk : function(){
+			//alert('OK');
+		},  //点击确定时添加额外的执行函数 默认null
+		onCancel : function(){
+			//alert('A');
+		}, //点击取消时添加额外的执行函数 默认null
+	}
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../demo/vendor/bootstrap/js/bootstrap.min.js"></script>
+	$('#picktimeReserve').mdatetimer(config);
+});
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../demo/vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../demo/dist/js/sb-admin-2.js"></script>
-
+</script>
 </body>
-
 </html>
+

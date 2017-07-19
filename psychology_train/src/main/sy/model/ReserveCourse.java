@@ -2,15 +2,19 @@ package sy.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ReserveCourse {
     private String reserveId;
 
     private String reserveName;
 
     private String userId;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")    
     private Date pointDatetime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")    
     private Date agreeDatetime;
 
     private String mobile;

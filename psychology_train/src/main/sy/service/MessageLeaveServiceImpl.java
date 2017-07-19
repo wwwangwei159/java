@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sy.dao.MessageLeaveMapper;
-import sy.dao.UserMapper;
 import sy.model.MessageLeave;
-import sy.model.User;
 
 
 @Service("messageService")
