@@ -23,7 +23,6 @@ import sy.service.ReserveCourseService;
 import sy.service.UserServiceI;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 
 @Controller
 @RequestMapping("/reserve")
@@ -80,7 +79,7 @@ public class ReserveCourseController extends AbstractController {
         PrintWriter out;
 		try {
 			out = response.getWriter();
-			out.println(str);//返回jsonp格式数据  
+			out.println(str);//
 	        out.flush();  
 	        out.close(); 
 		} catch (IOException e) {

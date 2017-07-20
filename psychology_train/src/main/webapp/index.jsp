@@ -423,7 +423,6 @@
         
                 // Remove preloader (https://ihatetomatoes.net/create-custom-preloading-screen/)
                 $('body').addClass('loaded');
-                           
             });
 
             /*
@@ -476,6 +475,10 @@
 
             });  
 */
+
+           $.ajaxSetup({  
+                async : false  
+             });   
             
             function loadCourse(){
             	 $.get("/psychology_train/reserve/loadCourse.do", function (data, textStatus){
@@ -488,20 +491,57 @@
             		    //innerHtmlStr = innerHtmlStr +"<tr><td>"+obj[u].courseName+"</td>&nbsp;&nbsp;<td>"+obj[u].startDatetime+"至"+obj[u].endDatetime+"</td>&nbsp;&nbsp;<td>"+obj[u].nowCount+"/"+obj[u].maxCount+"</td></tr>";
             			p++;
             		    innerHtmlStr = innerHtmlStr
-            			 +"<div class=\"grid-item\">"
+            			 +"<div class=\"grid-item divOnClick\" id=\""+obj[u].courseId+"_"+obj[u].courseName+"\">"
             			 +"<figure class=\"effect-ruby\">"
             			 +" <img src=\"/psychology_train/demo2/img/tm-img-1"+p+"-tn.jpg\" alt=\"Image\" class=\"img-fluid tm-img\">"
             			 +"   <figcaption>"
             			 +"       <h2 class=\"tm-figure-title\"><span>"+obj[u].courseName+"</span></h2>"
-            			 +"       <p class=\"tm-figure-description\">"+obj[u].courseMessage+"      "+obj[u].startDatetime+"至"+obj[u].endDatetime+"      座位数"+obj[u].maxCount+"     已预约"+obj[u].nowCount+"</p>"
-            			 +"       <a href=\"/psychology_train/reserve/index.do\">预约</a>"
+            			 +"       <p class=\"tm-figure-description\">"+obj[u].startDatetime+"至"+obj[u].endDatetime+"      座位数"+obj[u].maxCount+"     已预约"+obj[u].nowCount+"    "+obj[u].courseMessage+"</p>"
+            			// +"       <a href=\"/psychology_train/reserve/index.do\">预约</a>"
             			 +"   </figcaption> "          
             			 +"</figure>"
-            			 +"</div>"
+            			 +"</div>";
             		}  
             		$("#courses").html(innerHtmlStr);
             	});
+            	 $(".divOnClick").on("click",function(){
+            		 var courseId = this.id.substring(0,this.id.indexOf("_")+1);
+            		 var courseName = this.id.substring(this.id.indexOf("_")+1);
+            		 var str = "<div class=\"tm-contact-page\">"
+            			 +"<div class=\"row\">"
+            			 +"<div class=\"col-xs-12\">"
+            			 +"	<div class=\"tm-flex tm-contact-container\">"
+            			 +"		<div class=\"tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact\">"
+            			 +"			<h2 class=\"tm-contact-info\">预约课程</h2>"
+            			 +"			<form id=\"reserve\" name=\"reserve\""
+            			 +"				action=\"/psychology_train/reserve/insert.do\" method=\"post\" class=\"tm-contact-form\">"
+            			 +"				<div class=\"form-group\">"
+            			 +"					<input type=\"text\" id=\"reserveName\" name=\"reserveName\" class=\"form-control\" placeholder=\"姓名\" required />"
+            			 +"				</div>"
+            			 +"				<div class=\"form-group\">"
+            			 +"					<input type=\"text\" class=\"form-control\" id=\"phone\" placeholder=\"电话\" name=\"phone\">"
+            			 +"				</div>"
+            			 +"				<div class=\"form-group\">"
+            			 +"					<input type=\"email\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"Email\" />"
+            			 +"				</div>"
+            			 +"				<div class=\"form-group\">"
+            			 +"					<input type=\"courseName\" id=\"courseName\" value=\""+courseName+"\" name=\"courseName\" class=\"form-control\" readOnly placeholder=\"预约课程\" />"
+            			 +"				</div>"
+            			 +"				<button type=\"submit\" class=\"pull-xs-right tm-submit-btn\">提交</button>"
+            			 +"			</form>"
+            			 +"		</div>"
+            			 +"		<div class=\"tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact\">"
+            			 +"			<h2 class=\"tm-contact-info\">中国科学院心理教育机构合作中心</h2>"
+            			 +"		</div>"
+            			 +"	</div>"
+            			 +"</div>"
+            			 +"</div>";
+                     $("#courses").html(str);
+                 });
+            	 adjustHeightOfPage(4);
             }
+            
+            
             
         </script>            
 
