@@ -38,26 +38,16 @@
 
 <body>
 
-    <div id="wrapper">
+    <div class="container">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">自助系统</a>
-            </div>
-        </nav>
+       <%@ include file="/framework/mainmenu.jsp" %>
         
             <!-- /.navbar-header -->
         <div align="center">
            <div class="row">
                <div class="col-lg-12">
-                <div class="col-lg-2 col-md-6">
+                <div class="col-lg-3 col-md-3">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -72,14 +62,14 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">留言</span>
+                                <span class="pull-left">心理测试</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
+                <div class="col-lg-3 col-md-3">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -87,6 +77,28 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
+                                    <div class="huge"></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" onclick="message()">
+                            <div class="panel-footer">
+                                <span class="pull-left">留言</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-3 text-right">
                                     <div class="huge"></div>
                                     <div></div>
                                 </div>
@@ -101,7 +113,80 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
+                
+                 <div class="col-lg-3 col-md-3">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <div class="huge"></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" onclick="reserveCourse()">
+                            <div class="panel-footer">
+                                <span class="pull-left">视频</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                </div>
+                </div>
+                <!-- row end -->
+                 <div class="row">
+               <div class="col-lg-12">
+                <div class="col-lg-3 col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">心理测试</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" onclick="message()">
+                            <div class="panel-footer">
+                                <span class="pull-left">留言</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
                     <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
@@ -114,17 +199,42 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="#" onclick="reserveCourse()">
                             <div class="panel-footer">
-                                <span class="pull-left">问卷</span>
+                                <span class="pull-left">预约</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
                 </div>
+                
+                 <div class="col-lg-3 col-md-3">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <div class="huge"></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" onclick="reserveCourse()">
+                            <div class="panel-footer">
+                                <span class="pull-left">视频</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
                 </div>
                 </div>
+                <!-- row end -->
         </div>
         <!-- /#page-wrapper -->
 
@@ -155,8 +265,14 @@
          return result;   
        }  
        function reserveCourse(){
-          window.location.href=getContextPath()+"/reserveCourse/reserveCourseAdd.html";
+          window.location.href=getContextPath()+"/reserve/index.do";
        }
+       function message(){
+           window.location.href=getContextPath()+"/mess/index.do";
+        }
+       function reserveCourse1(){
+           window.location.href=getContextPath()+"/reserve/index.do";
+        }
     </script>
 
 </body>

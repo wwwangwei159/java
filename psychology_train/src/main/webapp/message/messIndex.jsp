@@ -18,11 +18,13 @@
 </head>
 
 
-<body>    
-      <div class="container">
+<body>
+	<div class="container">
+	<%@ include file="/framework/mainmenu.jsp" %>
+      
         <div class="row">
-            <div class="col-md-5 col-md-offset-3">
-                <div class="login-panel panel panel-default">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">请留言</h3>
                     </div>
@@ -43,10 +45,7 @@
                                     <textarea class="form-control" name="message" rows="3" ></textarea>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <div class="col-md-offset-4">
-	                                <button class="btn btn-primary btn-lg btn-success " type="submit">提交</button> 
-	                                <button class="btn btn-primary btn-lg btn-info" type="button">返回</button>
-                                </div>
+                                <button class="btn btn-lg btn-success btn-block"  type="submit">提交</button>
                             </fieldset>
                         </form>
                     </div>
