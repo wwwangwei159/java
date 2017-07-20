@@ -18,4 +18,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
     
     List<User> selectByType(String type);
+    
+    User login(User record);
 }

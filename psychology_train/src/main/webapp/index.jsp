@@ -55,7 +55,7 @@
                                     <a class="nav-link" href="#0" data-no="5">留言</a>
                                 </li>
                                  <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="6">关于我们</a>
+                                    <a class="nav-link" onclick="window.location.href='/psychology_train/user/tologin.do'" href="#"  data-no="6">login in</a>
                                 </li>
                             </ul>
                         </div>                        
@@ -299,6 +299,8 @@
                     <a href="#" class="tm-social-link"><i class="fa fa-behance"></i></a>
                     <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>
                 </div>
+               <p class="tm-copyright-text">Copyright &copy; 2017 地址：河北省涿州市</p>
+            
                 
             </footer>
                     

@@ -8,6 +8,8 @@ public interface UserServiceI {
 
 	public User getUserById(String id);
 	
+	public User login(User record);
+	
 	 int insert(User record);
 
 	List<User> getAll();

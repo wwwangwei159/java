@@ -42,7 +42,8 @@
 					class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact">
 					<h2 class="tm-contact-info">中国科学院心理教育机构合作中心</h2>
 					<!-- google map goes here -->
-
+                     <p class="tm-text">我们会尽快跟您取得联系，请留下您的邮箱或者手机.</p>     
+                                        
 				</div>
 
 			</div>

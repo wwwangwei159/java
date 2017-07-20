@@ -54,5 +54,10 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.selectByType(type);
 	}
 
+	public User login(User record) {
+		// TODO Auto-generated method stub
+		return userMapper.login(record);
+	}
+
 	
 }

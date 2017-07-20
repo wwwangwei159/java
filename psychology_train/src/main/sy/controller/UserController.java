@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -61,11 +62,34 @@ public class UserController extends AbstractController {
 	@RequestMapping("/{id}/getUser")
 	public ModelAndView getUser(@PathVariable String id, HttpServletRequest request) {
 		Map<String,Object> model = new HashMap<String,Object>();  
-		User u = userService.getUserById(id);
-        model.put("userName",id);  
+		User u = userService.getUserById(id); 
         model.put("user",u);  
         
         return new ModelAndView("user/userDetail",model);
+	}
+	
+	@RequestMapping("/login")
+	public ModelAndView login(@ModelAttribute("form") User user, HttpServletRequest request) {
+		Map<String,Object> model = new HashMap<String,Object>();  
+		user = userService.login(user);
+		if(user!=null){
+			model.put("webRoot",request.getContextPath());  
+	        model.put("user",user);
+	        return new ModelAndView("index",model);
+		}else{
+			return null;
+		}
+       
+        
+       
+	}
+	
+	@RequestMapping("/tologin")
+	public ModelAndView tologin(HttpServletRequest request) {
+		Map<String,Object> model = new HashMap<String,Object>(); 
+        model.put("webRoot",request.getContextPath()); 
+        
+        return new ModelAndView("user/userLogin",model);
 	}
 
 	
