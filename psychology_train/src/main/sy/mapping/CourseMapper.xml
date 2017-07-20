@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sy.dao.CourseMapper" >
+  <resultMap id="BaseResultMap" type="sy.model.Course" >
+    <id column="course_id" property="courseId" jdbcType="VARCHAR" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="course_message" property="courseMessage" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="start_datetime" property="startDatetime" jdbcType="TIMESTAMP" />
+    <result column="end_datetime" property="endDatetime" jdbcType="TIMESTAMP" />
+    <result column="max_count" property="maxCount" jdbcType="INTEGER" />
+    <result column="now_count" property="nowCount" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    course_id, course_name, course_message, user_id, start_datetime, end_datetime, max_count, 
+    now_count, email, phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectCourse" resultMap="BaseResultMap" parameterType="sy.model.Course" >
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where 1=1 
+    <if test="courseId != null" >
+       and course_id = #{courseId,jdbcType=VARCHAR}
+      </if>
+      <if test="courseName != null" >
+        and course_name = #{course_name,jdbcType=VARCHAR}
+      </if>
+      <if test="courseMessage != null" >
+        and course_message = #{course_message,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from course
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="sy.model.Course" >
+    insert into course (course_id, course_name, course_message, 
+      user_id, start_datetime, end_datetime, 
+      max_count, now_count, email, 
+      phone)
+    values (#{courseId,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{courseMessage,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{startDatetime,jdbcType=TIMESTAMP}, #{endDatetime,jdbcType=TIMESTAMP}, 
+      #{maxCount,jdbcType=INTEGER}, #{nowCount,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sy.model.Course" >
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="courseMessage != null" >
+        course_message,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="startDatetime != null" >
+        start_datetime,
+      </if>
+      <if test="endDatetime != null" >
+        end_datetime,
+      </if>
+      <if test="maxCount != null" >
+        max_count,
+      </if>
+      <if test="nowCount != null" >
+        now_count,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseMessage != null" >
+        #{courseMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="startDatetime != null" >
+        #{startDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDatetime != null" >
+        #{endDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxCount != null" >
+        #{maxCount,jdbcType=INTEGER},
+      </if>
+      <if test="nowCount != null" >
+        #{nowCount,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sy.model.Course" >
+    update course
+    <set >
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseMessage != null" >
+        course_message = #{courseMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="startDatetime != null" >
+        start_datetime = #{startDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDatetime != null" >
+        end_datetime = #{endDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxCount != null" >
+        max_count = #{maxCount,jdbcType=INTEGER},
+      </if>
+      <if test="nowCount != null" >
+        now_count = #{nowCount,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sy.model.Course" >
+    update course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      course_message = #{courseMessage,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      start_datetime = #{startDatetime,jdbcType=TIMESTAMP},
+      end_datetime = #{endDatetime,jdbcType=TIMESTAMP},
+      max_count = #{maxCount,jdbcType=INTEGER},
+      now_count = #{nowCount,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR}
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -22,6 +22,11 @@
     from reserve_course
     where reserve_id = #{reserveId,jdbcType=VARCHAR}
   </select>
+  <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reserve_course
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from reserve_course
     where reserve_id = #{reserveId,jdbcType=VARCHAR}

@@ -9,7 +9,7 @@ drop table question;
 drop table question_option;
 drop table exam_result_head;
 drop table exam_result_detail;
-
+drop table course
 
 CREATE TABLE m_user(  ---用户表
 user_id varchar(15) primary key, ----yyyymmddhhmisssss8888
@@ -108,5 +108,16 @@ q_id varchar(15) DEFAULT NULL, ---问题ID
 exam_score int NOT NULL  ---问卷
 );
 
-
+CREATE TABLE course(  ---课程表
+course_id varchar(15) primary key, ----yyyymmddhhmisssss8888
+course_name varchar(80),---课程名称
+course_message varchar(300),----课程介绍
+user_id varchar(15) DEFAULT NULL,---上课老师
+start_datetime datetime default null, ---开始时间
+end_datetime datetime default null,---结束时间
+max_count int default null, ---最大人数
+now_count int default 0,---当前预约数
+email varchar(80) default null,---咨询邮箱
+phone varchar(80) default null ---课程咨询电话
+);
 

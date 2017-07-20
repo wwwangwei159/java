@@ -15,11 +15,10 @@
     <!-- Bootstrap style -->
     <link rel="stylesheet" href="/psychology_train/demo2/css/hero-slider-style.css">                              
     <!-- Hero slider style (https://codyhouse.co/gem/hero-slider/) -->
-    <link rel="stylesheet" href="css/magnific-popup.css">                                 
+    <link rel="stylesheet" href="/psychology_train/demo2/css/magnific-popup.css">                       
     <!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
     <link rel="stylesheet" href="/psychology_train/demo2/css/templatemo-style.css">                                   
     <!-- Templatemo style -->
-
  
 </head>
 
@@ -50,7 +49,7 @@
                                     <a class="nav-link" href="#0" data-no="3">问卷测评</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="4">预约课程</a>
+                                    <a class="nav-link" href="#0" data-no="4" onclick="loadCourse();" >预约课程</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#0" data-no="5">留言</a>
@@ -236,86 +235,15 @@
                         </div>                      
                     </div>
                 </li>
-
-                <!-- Page 4 Gallery Three -->
+                <!-- Page 4 预约 -->
                 <li>
-                    <div class="cd-full-width">
-                        <div class="container-fluid js-tm-page-content" data-page-no="4" data-page-type="gallery">                        
-                            <div class="tm-img-gallery-container tm-img-gallery-container-3">
-                                <div class="tm-img-gallery gallery-three">
-                                <!-- Gallery Two pop up connected with JS code below -->
-                                    
-                                    <div class="tm-img-gallery-info-container">                                    
-                                        <h2 class="tm-text-title tm-gallery-title"><span class="tm-white">Third Image Grid</span></h2>
-                                        <p class="tm-text"><span class="tm-white">Nulla efficitur, ligula et imperdiet volutpat, lacus tortor tempus massa, eget tempus quam nibh vel nulla. Maecenas purus sem, lobortis id odio in, ultrices scelerisque sapien.</span>
-                                        </p>                                     
-                                    </div>
-                                    <div class="grid-item">
-                                        <figure class="effect-ruby">
-                                            <img src="/psychology_train/demo2/img/tm-img-11-tn.jpg" alt="Image" class="img-fluid tm-img">
-                                            <figcaption>
-                                                <h2 class="tm-figure-title">Picture <span>One</span></h2>
-                                                <p class="tm-figure-description">Suspendisse id placerat risus. Mauris quis luctus risus.</p>
-                                                <a href="/psychology_train/demo2/img/tm-img-11.jpg">View more</a>
-                                            </figcaption>           
-                                        </figure>
-                                    </div>
-                                    <div class="grid-item">
-                                        <figure class="effect-ruby">
-                                            <img src="/psychology_train/demo2/img/tm-img-12-tn.jpg" alt="Image" class="img-fluid tm-img">
-                                            <figcaption>
-                                                <h2 class="tm-figure-title">Picture <span>Two</span></h2>
-                                                <p class="tm-figure-description">Maecenas purus sem, lobortis id odio in sapien.</p>
-                                                <a href="/psychology_train/demo2/img/tm-img-12.jpg">View more</a>
-                                            </figcaption>           
-                                        </figure>
-                                    </div>
-                                    <div class="grid-item">
-                                        <figure class="effect-ruby">
-                                            <img src="/psychology_train/demo2/img/tm-img-13-tn.jpg" alt="Image" class="img-fluid tm-img">
-                                            <figcaption>
-                                                <h2 class="tm-figure-title">Picture <span>Three</span></h2>
-                                                <p class="tm-figure-description">Suspendisse id placerat risus. Mauris quis luctus risus.</p>
-                                                <a href="/psychology_train/demo2/img/tm-img-13.jpg">View more</a>
-                                            </figcaption>           
-                                        </figure>
-                                    </div>
-                                    <div class="grid-item">
-                                        <figure class="effect-ruby">
-                                            <img src="/psychology_train/demo2/img/tm-img-14-tn.jpg" alt="Image" class="img-fluid tm-img">
-                                            <figcaption>
-                                                <h2 class="tm-figure-title">Picture <span>Four</span></h2>
-                                                <p class="tm-figure-description">Maecenas purus sem, lobortis id odio in sapien.</p>
-                                                <a href="/psychology_train/demo2/img/tm-img-14.jpg">View more</a>
-                                            </figcaption>           
-                                        </figure>
-                                    </div>
-                                    <div class="grid-item">
-                                        <figure class="effect-ruby">
-                                            <img src="/psychology_train/demo2/img/tm-img-15-tn.jpg" alt="Image" class="img-fluid tm-img">
-                                            <figcaption>
-                                                <h2 class="tm-figure-title">Picture <span>Five</span></h2>
-                                                <p class="tm-figure-description">Suspendisse id placerat risus. Mauris quis luctus risus.</p>
-                                                <a href="/psychology_train/demo2/img/tm-img-15.jpg">View more</a>
-                                            </figcaption>           
-                                        </figure>
-                                    </div>
-                                    <div class="grid-item">
-                                        <figure class="effect-ruby">
-                                            <img src="/psychology_train/demo2/img/tm-img-16-tn.jpg" alt="Image" class="img-fluid tm-img">
-                                            <figcaption>
-                                                <h2 class="tm-figure-title">Picture <span>Six</span></h2>
-                                                <p class="tm-figure-description">Maecenas purus sem, lobortis id odio in sapien.</p>
-                                                <a href="/psychology_train/demo2/img/tm-img-16.jpg">View more</a>
-                                            </figcaption>           
-                                        </figure>
-                                    </div>                                                                                                 
-                                </div>                                 
-                            </div> <!-- .tm-img-gallery-container -->
-                        </div>         
-                    </div>  
+                <div class="cd-full-width">
+                    <div class="container-fluid js-tm-page-content" data-page-no="4" data-page-type="gallery">          
+                   		<%@ include file="/reserveCourse/reserveCourseIndex.jsp" %>
+                   </div>
+                        
+                </div> <!-- .cd-full-width -->
                 </li>
-
                 <!-- Page 5 留言 -->
                 <li>
                 <div class="cd-full-width">
@@ -323,7 +251,7 @@
                    		<%@ include file="/message/messIndex.jsp" %>
                    </div>
                         
-                </div> <!-- .cd-full-width -->>
+                </div> <!-- .cd-full-width -->
                 </li>
                 
                  <!-- Page 5 关于我们 -->
@@ -392,7 +320,19 @@
         <script src="/psychology_train/demo2/js/bootstrap.min.js"></script>             <!-- Bootstrap js (v4-alpha.getbootstrap.com/) -->
         <script src="/psychology_train/demo2/js/hero-slider-main.js"></script>          <!-- Hero slider (https://codyhouse.co/gem/hero-slider/) -->
         <script src="/psychology_train/demo2/js/jquery.magnific-popup.min.js"></script> <!-- Magnific popup (http://dimsemenov.com/plugins/magnific-popup/) -->
-        
+    <!--时间控件样式-->  
+  <script src="/psychology_train/mobiscroll/dev/js/mobiscroll.core-2.5.2.js" type="text/javascript"></script>
+	<script src="/psychology_train/mobiscroll/dev/js/mobiscroll.core-2.5.2-zh.js" type="text/javascript"></script>
+
+	<link href="/psychology_train/mobiscroll/dev/css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css" />
+	<link href="/psychology_train/mobiscroll/dev/css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css" />
+	<script src="/psychology_train/mobiscroll/dev/js/mobiscroll.datetime-2.5.1.js" type="text/javascript"></script>
+	<script src="/psychology_train/mobiscroll/dev/js/mobiscroll.datetime-2.5.1-zh.js" type="text/javascript"></script>
+
+	<!-- S 可根据自己喜好引入样式风格文件 -->
+	<script src="/psychology_train/mobiscroll/dev/js/mobiscroll.android-ics-2.5.2.js" type="text/javascript"></script>
+	<link href="/psychology_train/mobiscroll/dev/css/mobiscroll.android-ics-2.5.2.css" rel="stylesheet" type="text/css" />
+	<!-- E 可根据自己喜好引入样式风格文件 -->
         <script>
 
             function adjustHeightOfPage(pageNo) {
@@ -486,8 +426,83 @@
                            
             });
 
-           
+            /*
+            $(function () {
+    			var currYear = (new Date()).getFullYear();	
+    			var opt={};
+    			opt.date = {preset : 'date'};
+    			//opt.datetime = { preset : 'datetime', minDate: new Date(2012,3,10,9,22), maxDate: new Date(2014,7,30,15,44), stepMinute: 5  };
+    			opt.datetime = {preset : 'datetime'};
+    			opt.time = {preset : 'time'};
+    			opt.default = {
+    				theme: 'android-ics light', //皮肤样式
+    		        display: 'modal', //显示方式 
+    		        mode: 'scroller', //日期选择模式
+    				lang:'zh',
+    		        startYear:currYear, //开始年份
+    		        endYear:currYear + 10 //结束年份
+    			};
 
+    		  	var optDateTime = $.extend(opt['datetime'], opt['default']);
+    		    $("#pointDatetime").mobiscroll(optDateTime).datetime(optDateTime);
+    			
+    			//下面注释部分是上面的参数可以替换改变它的样式
+    			//希望一起研究插件的朋友加我个人QQ也可以，本人也建个群 291464597 欢迎进群交流。哈哈。这个不能算广告。
+    			// 直接写参数方法
+    			//$("#scroller").mobiscroll(opt).date(); 
+    			// Shorthand for: $("#scroller").mobiscroll({ preset: 'date' });
+    			//具体参数定义如下
+    		    //{
+    		    //preset: 'date', //日期类型--datatime --time,
+    		    //theme: 'ios', //皮肤其他参数【android-ics light】【android-ics】【ios】【jqm】【sense-ui】【sense-ui】【sense-ui】
+    										//【wp light】【wp】
+    		    //mode: "scroller",//操作方式【scroller】【clickpick】【mixed】
+    		    //display: 'bubble', //显示方【modal】【inline】【bubble】【top】【bottom】
+    		    //dateFormat: 'yyyy-mm-dd', // 日期格式
+    		    //setText: '确定', //确认按钮名称
+    		    //cancelText: '清空',//取消按钮名籍我
+    		    //dateOrder: 'yymmdd', //面板中日期排列格
+    		    //dayText: '日', 
+    		    //monthText: '月',
+    		    //yearText: '年', //面板中年月日文字
+    		    //startYear: (new Date()).getFullYear(), //开始年份
+    		    //endYear: (new Date()).getFullYear() + 9, //结束年份
+    		    //showNow: true,
+    		    //nowText: "明天",  //
+    		    //showOnFocus: false,
+    		    //height: 45,
+    		    //width: 90,
+    		    //rows: 3}
+
+            });  
+*/
+            
+            function loadCourse(){
+            	 $.get("/psychology_train/reserve/loadCourse.do", function (data, textStatus){
+            		//返回的 data 可以是 xmlDoc, jsonObj, html, text, 等等.
+            		//this; // 在这里this指向的是Ajax请求的选项配置信息，请参考下图
+            		var obj = eval('(' + data + ')');
+            		var innerHtmlStr = "<div class=\"tm-img-gallery-info-container\"><h2 class=\"tm-text-title tm-gallery-title\"><span class=\"tm-white\">精品课程</span></h2><p class=\"tm-text\"><span class=\"tm-white\">真诚为您奉上以下课程，期待您的到来！</span></p></div>";
+            		var p = 0;
+            		for(var u in obj){  
+            		    //innerHtmlStr = innerHtmlStr +"<tr><td>"+obj[u].courseName+"</td>&nbsp;&nbsp;<td>"+obj[u].startDatetime+"至"+obj[u].endDatetime+"</td>&nbsp;&nbsp;<td>"+obj[u].nowCount+"/"+obj[u].maxCount+"</td></tr>";
+            			p++;
+            		    innerHtmlStr = innerHtmlStr
+            			 +"<div class=\"grid-item\">"
+            			 +"<figure class=\"effect-ruby\">"
+            			 +" <img src=\"/psychology_train/demo2/img/tm-img-1"+p+"-tn.jpg\" alt=\"Image\" class=\"img-fluid tm-img\">"
+            			 +"   <figcaption>"
+            			 +"       <h2 class=\"tm-figure-title\"><span>"+obj[u].courseName+"</span></h2>"
+            			 +"       <p class=\"tm-figure-description\">"+obj[u].courseMessage+"      "+obj[u].startDatetime+"至"+obj[u].endDatetime+"      座位数"+obj[u].maxCount+"     已预约"+obj[u].nowCount+"</p>"
+            			 +"       <a href=\"/psychology_train/reserve/index.do\">预约</a>"
+            			 +"   </figcaption> "          
+            			 +"</figure>"
+            			 +"</div>"
+            		}  
+            		$("#courses").html(innerHtmlStr);
+            	});
+            }
+            
         </script>            
 
 </body>

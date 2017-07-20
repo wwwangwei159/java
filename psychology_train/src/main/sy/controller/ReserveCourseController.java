@@ -1,5 +1,7 @@
 package sy.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import sy.model.MessageLeave;
+import sy.model.Course;
 import sy.model.ReserveCourse;
-import sy.model.User;
 import sy.service.ReserveCourseService;
 import sy.service.UserServiceI;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 
 @Controller
 @RequestMapping("/reserve")
@@ -59,10 +63,33 @@ public class ReserveCourseController extends AbstractController {
 	@RequestMapping("/index")
 	public ModelAndView index(HttpServletRequest request) {
 		Map<String,Object> model = new HashMap<String,Object>();  
-		List<User>  users = userService.getByType("");
-		model.put("webRoot", request.getContextPath());
-        model.put("users",users);  
-        return new ModelAndView("reserveCourse/reserveCourseAdd",model);
+        model.put("webRoot", request.getContextPath());
+        return new ModelAndView("/reserveCourse/reserveCourseAdd",model);
+	}
+	
+	
+	@RequestMapping("/loadCourse")
+	public ModelAndView loadCourse(HttpServletRequest request,HttpServletResponse response) {
+		List<Course>  list = reserveCourseService.getCourse(new Course());
+		response.setContentType("text/plain");  
+        response.setHeader("Pragma", "No-cache");  
+        response.setHeader("Cache-Control", "no-cache");  
+        response.setDateHeader("Expires", 0);  
+        response.setCharacterEncoding("utf-8");
+        String str = JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd HH:mm");
+        PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.println(str);//返回jsonp格式数据  
+	        out.flush();  
+	        out.close(); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			
+		} 
+        return null;
 	}
 	
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
@@ -71,7 +98,7 @@ public class ReserveCourseController extends AbstractController {
         model.put("webRoot", request.getContextPath());
         reserveCourse.setReserveId(Hander.getUuid());
         reserveCourseService.insert(reserveCourse);
-        return new ModelAndView("reserveCourse/rsuccess",model);
+        return new ModelAndView("index",model);
 	}
 	
 }
