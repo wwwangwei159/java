@@ -8,7 +8,7 @@
 		<ul class="nav navbar-nav navbar-left ">
 			<li><a href="#">心理测评</a></li>
 			<li><a href="/psychology_train/mess/index.do">留    言</a></li>
-			<li> <a href="/psychology_train/reserve/index.do" > 预 约老师   </a></li>
+			<li> <a href="/psychology_train/reserve/index.do" > 预约老师   </a></li>
 		</ul>
 		 <ul class="nav navbar-nav navbar-right">
       	  <li><a href="#">登录     </a></li>    
