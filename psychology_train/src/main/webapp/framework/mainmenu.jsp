@@ -241,7 +241,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> 留言处理</a>
+                            <a href="${webRoot}/mess/index.do"><i class="fa fa-table fa-fw"></i> 留言处理</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>

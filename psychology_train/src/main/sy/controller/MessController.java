@@ -49,6 +49,7 @@ public class MessController extends AbstractController {
 		Map<String,Object> model = new HashMap<String,Object>();  
         model.put("webRoot", request.getContextPath());
         List<MessageLeave> list = messService.getMessage(messageLeave);
+        model.put("list", list);
         return new ModelAndView("message/messIndex",model);
 	}
 	

@@ -21,8 +21,6 @@
 <body>    
      <div id="wrapper">
 		<%@ include file="/framework/mainmenu.jsp" %>
-            
-        </nav>
 
        <div id="page-wrapper">
              
