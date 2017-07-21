@@ -1,5 +1,7 @@
 package sy.dao;
 
+import java.util.List;
+
 import sy.model.MessageLeave;
 
 public interface MessageLeaveMapper {
@@ -14,4 +16,6 @@ public interface MessageLeaveMapper {
     int updateByPrimaryKeySelective(MessageLeave record);
 
     int updateByPrimaryKey(MessageLeave record);
+    
+    List<MessageLeave> getList(MessageLeave record);
 }

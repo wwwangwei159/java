@@ -78,13 +78,21 @@ public class UserController extends AbstractController {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 	        model.put("user",user);
-	        return new ModelAndView("index",model);
+	        return this.admin(request);
 		}else{
 			return new ModelAndView("user/userLogin",model);
 		}
        
-        
-       
+	}
+	
+	@RequestMapping("/admin")
+	public ModelAndView admin(HttpServletRequest request) {
+		Map<String,Object> model = new HashMap<String,Object>();  
+		
+		model.put("webRoot",request.getContextPath());  
+	
+	    return new ModelAndView("user/userAdmin",model);
+
 	}
 	
 	@RequestMapping("/tologin")

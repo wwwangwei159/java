@@ -36,7 +36,7 @@ public class MessageLeaveServiceImpl implements MessageLeaveService {
 
 	public List<MessageLeave> getMessage(MessageLeave record) {
 		// TODO Auto-generated method stub
-		return null;
+		return messageLeaveMapper.getList(record);
 	}
 
 	

@@ -1,6 +1,7 @@
 package sy.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,9 +45,10 @@ public class MessController extends AbstractController {
 
 
 	@RequestMapping("/index")
-	public ModelAndView index(HttpServletRequest request) {
+	public ModelAndView index(@ModelAttribute("form") MessageLeave messageLeave,HttpServletRequest request) {
 		Map<String,Object> model = new HashMap<String,Object>();  
         model.put("webRoot", request.getContextPath());
+        List<MessageLeave> list = messService.getMessage(messageLeave);
         return new ModelAndView("message/messIndex",model);
 	}
 	
