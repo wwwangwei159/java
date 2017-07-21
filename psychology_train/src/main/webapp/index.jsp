@@ -495,7 +495,7 @@
             		    innerHtmlStr = innerHtmlStr
             			 +"<div class=\"grid-item divOnClick\" id=\""+obj[u].courseId+"_"+obj[u].courseName+"\">"
             			 +"<figure class=\"effect-ruby\">"
-            			 +" <img src=\"/psychology_train/demo2/img/tm-img-1"+p+"-tn.jpg\" alt=\"Image\" class=\"img-fluid tm-img\">"
+            			 +" <img src=\"/psychology_train/demo2/img/tm-img-0"+p+"-tn.jpg\" alt=\"Image\" class=\"img-fluid tm-img\">"
             			 +"   <figcaption>"
             			 +"       <h2 class=\"tm-figure-title\"><span>"+obj[u].courseName+"</span></h2>"
             			 +"       <p class=\"tm-figure-description\">"+obj[u].startDatetime+"至"+obj[u].endDatetime+"      座位数"+obj[u].maxCount+"     已预约"+obj[u].nowCount+"    "+obj[u].courseMessage+"</p>"
@@ -507,7 +507,7 @@
             		$("#courses").html(innerHtmlStr);
             	});
             	 $(".divOnClick").on("click",function(){
-            		 var courseId = this.id.substring(0,this.id.indexOf("_")+1);
+            		 var courseId = this.id.substring(0,this.id.indexOf("_"));
             		 var courseName = this.id.substring(this.id.indexOf("_")+1);
             		 var str = "<div class=\"tm-contact-page\">"
             			 +"<div class=\"row\">"
@@ -524,10 +524,11 @@
             			 +"					<input type=\"text\" class=\"form-control\" id=\"phone\" placeholder=\"电话\" name=\"phone\">"
             			 +"				</div>"
             			 +"				<div class=\"form-group\">"
-            			 +"					<input type=\"email\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"Email\" />"
+            			 +"					<input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"Email\" />"
             			 +"				</div>"
             			 +"				<div class=\"form-group\">"
-            			 +"					<input type=\"courseName\" id=\"courseName\" value=\""+courseName+"\" name=\"courseName\" class=\"form-control\" readOnly placeholder=\"预约课程\" />"
+            			 +"					<input type=\"text\" id=\"courseName\" value=\""+courseName+"\" name=\"courseName\" class=\"form-control\" readOnly placeholder=\"预约课程\" />"
+            			 +"					<input type=\"hidden\" id=\"courseId\" value=\""+courseId+"\" name=\"courseId\"/>"
             			 +"				</div>"
             			 +"				<button type=\"submit\" class=\"pull-xs-right tm-submit-btn\">提交</button>"
             			 +"			</form>"

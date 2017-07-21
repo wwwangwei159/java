@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="sy.model.ReserveCourse" >
     <id column="reserve_id" property="reserveId" jdbcType="VARCHAR" />
     <result column="reserve_name" property="reserveName" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="course_id" property="courseId" jdbcType="VARCHAR" />
     <result column="point_datetime" property="pointDatetime" jdbcType="TIMESTAMP" />
     <result column="agree_datetime" property="agreeDatetime" jdbcType="TIMESTAMP" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
@@ -13,7 +13,7 @@
     <result column="status" property="status" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    reserve_id, reserve_name, user_id, point_datetime, agree_datetime, mobile, email, 
+    reserve_id, reserve_name, course_id, point_datetime, agree_datetime, mobile, email, 
     phone, status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -32,15 +32,23 @@
     where reserve_id = #{reserveId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="sy.model.ReserveCourse" >
-    insert into reserve_course (reserve_id, reserve_name, user_id, 
+    insert into reserve_course (reserve_id, reserve_name, course_id, 
       point_datetime, agree_datetime, mobile, 
       email, phone, status
       )
-    values (#{reserveId,jdbcType=VARCHAR}, #{reserveName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+    values (#{reserveId,jdbcType=VARCHAR}, #{reserveName,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, 
       #{pointDatetime,jdbcType=TIMESTAMP}, #{agreeDatetime,jdbcType=TIMESTAMP}, #{mobile,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
-      )
+      );
+      
+    
+    
   </insert>
+  
+  <update id="updateCourseByPrimaryKey" parameterType="java.lang.String" >
+    update course set now_count=now_count+1 where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+  
   <insert id="insertSelective" parameterType="sy.model.ReserveCourse" >
     insert into reserve_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -50,8 +58,8 @@
       <if test="reserveName != null" >
         reserve_name,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="courseId != null" >
+        course_id,
       </if>
       <if test="pointDatetime != null" >
         point_datetime,
@@ -79,8 +87,8 @@
       <if test="reserveName != null" >
         #{reserveName,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
       </if>
       <if test="pointDatetime != null" >
         #{pointDatetime,jdbcType=TIMESTAMP},
@@ -108,8 +116,8 @@
       <if test="reserveName != null" >
         reserve_name = #{reserveName,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=VARCHAR},
       </if>
       <if test="pointDatetime != null" >
         point_datetime = #{pointDatetime,jdbcType=TIMESTAMP},
@@ -135,7 +143,7 @@
   <update id="updateByPrimaryKey" parameterType="sy.model.ReserveCourse" >
     update reserve_course
     set reserve_name = #{reserveName,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=VARCHAR},
       point_datetime = #{pointDatetime,jdbcType=TIMESTAMP},
       agree_datetime = #{agreeDatetime,jdbcType=TIMESTAMP},
       mobile = #{mobile,jdbcType=VARCHAR},

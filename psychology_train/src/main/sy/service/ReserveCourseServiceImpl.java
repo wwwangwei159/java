@@ -41,7 +41,8 @@ public class ReserveCourseServiceImpl implements ReserveCourseService {
 
 	public int insert(ReserveCourse reserveCourse) {
 		// TODO Auto-generated method stub
-		return reserveCourseMapper.insert(reserveCourse);
+		 int i = reserveCourseMapper.insert(reserveCourse);
+		 return reserveCourseMapper.updateCourseByPrimaryKey(reserveCourse.getCourseId());
 	}
 
 	public List<ReserveCourse> getReserveCourse(ReserveCourse reserveCourse) {

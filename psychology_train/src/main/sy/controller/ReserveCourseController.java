@@ -92,12 +92,12 @@ public class ReserveCourseController extends AbstractController {
 	}
 	
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
-	public ModelAndView insert(@ModelAttribute("form") ReserveCourse reserveCourse,HttpServletRequest request) {
+	public String insert(@ModelAttribute("form") ReserveCourse reserveCourse,HttpServletRequest request) {
 		Map<String,Object> model = new HashMap<String,Object>();  
         model.put("webRoot", request.getContextPath());
         reserveCourse.setReserveId(Hander.getUuid());
         reserveCourseService.insert(reserveCourse);
-        return new ModelAndView("index",model);
+        return "redirect:/index.jsp"; 
 	}
 	
 }

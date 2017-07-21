@@ -11,7 +11,9 @@ public interface ReserveCourseMapper {
 
     ReserveCourse selectByPrimaryKey(String reserveId);
 
-    int updateByPrimaryKeySelective(ReserveCourse record);
+    int updateByPrimaryKeySelective(ReserveCourse reserveCourse);
 
-    int updateByPrimaryKey(ReserveCourse record);
+    int updateByPrimaryKey(ReserveCourse reserveCourse);
+    
+    int updateCourseByPrimaryKey(String courseId);
 }

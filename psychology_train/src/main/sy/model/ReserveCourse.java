@@ -9,7 +9,7 @@ public class ReserveCourse {
 
     private String reserveName;
 
-    private String userId;
+    private String courseId;
     
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")    
     private Date pointDatetime;
@@ -41,12 +41,12 @@ public class ReserveCourse {
         this.reserveName = reserveName == null ? null : reserveName.trim();
     }
 
-    public String getUserId() {
-        return userId;
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setCourseId(String courseId) {
+        this.courseId = courseId == null ? null : courseId.trim();
     }
 
     public Date getPointDatetime() {

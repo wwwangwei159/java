@@ -39,7 +39,7 @@ status varchar(80) DEFAULT NULL
 CREATE TABLE reserve_course( ---预约老师表
 reserve_id varchar(15) primary key,  ----yyyymmddhhmisssss8888
 reserve_name varchar(80) DEFAULT NULL, --预约人姓名
-user_id varchar(80) DEFAULT NULL,
+course_id varchar(80) DEFAULT NULL,  --预约课程
 point_datetime datetime DEFAULT NULL, --预约人时间
 agree_datetime datetime DEFAULT NULL,
 mobile varchar(80) DEFAULT NULL,
@@ -112,6 +112,7 @@ CREATE TABLE course(  ---课程表
 course_id varchar(15) primary key, ----yyyymmddhhmisssss8888
 course_name varchar(80),---课程名称
 course_message varchar(300),----课程介绍
+course_address varchar(300),----上课地点
 user_id varchar(15) DEFAULT NULL,---上课老师
 start_datetime datetime default null, ---开始时间
 end_datetime datetime default null,---结束时间

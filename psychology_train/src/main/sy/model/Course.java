@@ -9,6 +9,8 @@ public class Course {
 
     private String courseMessage;
 
+    private String courseAddress;
+
     private String userId;
 
     private Date startDatetime;
@@ -45,6 +47,14 @@ public class Course {
 
     public void setCourseMessage(String courseMessage) {
         this.courseMessage = courseMessage == null ? null : courseMessage.trim();
+    }
+
+    public String getCourseAddress() {
+        return courseAddress;
+    }
+
+    public void setCourseAddress(String courseAddress) {
+        this.courseAddress = courseAddress == null ? null : courseAddress.trim();
     }
 
     public String getUserId() {
