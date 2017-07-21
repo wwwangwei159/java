@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,12 +73,14 @@ public class UserController extends AbstractController {
 	public ModelAndView login(@ModelAttribute("form") User user, HttpServletRequest request) {
 		Map<String,Object> model = new HashMap<String,Object>();  
 		user = userService.login(user);
+		model.put("webRoot",request.getContextPath());  
 		if(user!=null){
-			model.put("webRoot",request.getContextPath());  
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
 	        model.put("user",user);
 	        return new ModelAndView("index",model);
 		}else{
-			return null;
+			return new ModelAndView("user/userLogin",model);
 		}
        
         
