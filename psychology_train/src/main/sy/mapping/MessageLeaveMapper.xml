@@ -25,7 +25,7 @@
     select 
     <include refid="Base_Column_List" />
     from message_leave
-    where 1=1
+    where status = 'Y'
    		<if test="reserveName != null" >
        and reserve_name =  #{reserveName,jdbcType=VARCHAR},
       </if>
@@ -46,9 +46,6 @@
       </if>
       <if test="phone != null" >
        and phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-       and status = #{status,jdbcType=VARCHAR},
       </if>
   </select>
   

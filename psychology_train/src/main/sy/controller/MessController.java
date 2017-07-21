@@ -1,5 +1,6 @@
 package sy.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,8 @@ public class MessController extends AbstractController {
 		Map<String,Object> model = new HashMap<String,Object>();  
         model.put("webRoot", request.getContextPath());
         messageLeave.setMessId(Hander.getUuid());
+        messageLeave.setStatus("Y");
+        messageLeave.setLeaveDatetime(new Date());
         messService.insert(messageLeave);
         return new ModelAndView("index",model);
 	}

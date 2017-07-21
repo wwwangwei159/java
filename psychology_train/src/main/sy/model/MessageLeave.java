@@ -2,6 +2,8 @@ package sy.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class MessageLeave {
     private String messId;
 
@@ -9,6 +11,7 @@ public class MessageLeave {
 
     private String userId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") 
     private Date leaveDatetime;
 
     private String message;
