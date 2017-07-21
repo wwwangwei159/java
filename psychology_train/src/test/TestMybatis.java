@@ -51,10 +51,10 @@ public class TestMybatis {
 	@Test
 	public void insertTest3() {
 		User user = new User();
-		user.setUserId("233");
-		user.setPhone("1232344");
+		user.setUserId("234");
+		user.setPhone("admin");
 		user.setMobile("345");
-		user.setPwd("123");
+		user.setPwd("admin");
 		int i = userService.insert(user);
 		logger.info("result............"+i);
 	}
