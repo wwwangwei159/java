@@ -299,8 +299,7 @@
                     <a href="#" class="tm-social-link"><i class="fa fa-behance"></i></a>
                     <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>
                 </div>
-               <p class="tm-copyright-text">Copyright &copy; 2017 地址：河北省涿州市</p>
-            
+            <div><br></div>
                 
             </footer>
                     

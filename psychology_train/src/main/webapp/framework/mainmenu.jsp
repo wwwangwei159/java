@@ -226,7 +226,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 课程管理</a>
+                            <a href="#" id="courseManage"><i class="fa fa-dashboard fa-fw"></i> 课程管理</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 问卷<span class="fa arrow"></span></a>
@@ -260,3 +260,61 @@
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
+            <script type="text/javascript">
+            $.ajaxSetup({  
+                async : false  
+             });   
+            
+            $("#courseManage").on("click",function(){
+               $("#page-wrapper").load("/psychology_train/course/courseIndex.jsp");
+               $("#courseSearch").on("click",function(){
+               var courseSearchValue = $("#courseSearchValue").val();
+               if(courseSearchValue.trim()){
+                  loadCourse(courseSearchValue);
+               }
+             });
+               loadCourse();
+             });
+             
+             function loadCourse(courseName){
+                var url = "/psychology_train/reserve/loadCourse.do";
+                if(courseName){
+                   url = url+"?courseName="+courseName;
+                   url = encodeURI(url);
+                }
+                $.get(url, function (data,textStatus){
+            		//返回的 data 可以是 xmlDoc, jsonObj, html, text, 等等.
+            		//this; // 在这里this指向的是Ajax请求的选项配置信息，请参考下图
+            		var obj = eval('(' + data + ')');
+            		var innerHtmlStr = "<table class=\"table table-bordered table-hover table-striped\">"
+                                       +"     <thead>"
+                                       +"         <tr>"
+                                       +"              <th>名称</th>"
+                                       +"              <th>时间</th>"
+                                       +"              <th>主讲老师</th>"
+                                       +"              <th>预约情况</th>"
+                                       +"              <th>状态</th>"
+                                       +"         </tr>"
+                                       +"     </thead>"
+                                       +"     <tbody>";
+            		var p = 0;
+            		for(var u in obj){  
+            		    //innerHtmlStr = innerHtmlStr +"<tr><td>"+obj[u].courseName+"</td>&nbsp;&nbsp;<td>"+obj[u].startDatetime+"至"+obj[u].endDatetime+"</td>&nbsp;&nbsp;<td>"+obj[u].nowCount+"/"+obj[u].maxCount+"</td></tr>";
+            			p++;
+            		    innerHtmlStr = innerHtmlStr
+            			 +"<tr>"
+                         +"  <td>"+obj[u].courseName+"</td>"
+                         +"  <td>"+obj[u].startDatetime+"至"+obj[u].endDatetime+"</td>"
+                         +"  <td>"+obj[u].userId+"</td>"
+                         +"  <td>"+"座位数"+obj[u].maxCount+" 已预约"+obj[u].nowCount+"</td>"
+                         +"  <td>已发布</td>"
+                         +"</tr>";
+            		}  
+            		innerHtmlStr = innerHtmlStr
+            			          +"    </tbody>"
+                                  +"</table>";
+            		$("#courseResult").html(innerHtmlStr);
+            	});
+             }
+            
+            </script>

@@ -5,7 +5,7 @@
     <id column="course_id" property="courseId" jdbcType="VARCHAR" />
     <result column="course_name" property="courseName" jdbcType="VARCHAR" />
     <result column="course_message" property="courseMessage" jdbcType="VARCHAR" />
-    <result column="course_address" jdbcType="VARCHAR" property="courseAddress" />
+    <result column="course_address" property="courseAddress" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="start_datetime" property="startDatetime" jdbcType="TIMESTAMP" />
     <result column="end_datetime" property="endDatetime" jdbcType="TIMESTAMP" />
@@ -15,8 +15,8 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    course_id, course_name, course_message, user_id, start_datetime, end_datetime, max_count, 
-    now_count, email, phone
+    course_id, course_name, course_message, course_address, user_id, start_datetime, 
+    end_datetime, max_count, now_count, email, phone
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -28,16 +28,17 @@
     select 
     <include refid="Base_Column_List" />
     from course
-    where 1=1 
-    <if test="courseId != null" >
-       and course_id = #{courseId,jdbcType=VARCHAR}
-      </if>
+    <where> 
+   <if test="courseId != null" >
+       course_id = ${courseId}
+      </if>    
       <if test="courseName != null" >
-        and course_name = #{course_name,jdbcType=VARCHAR}
+        and course_name like '%${courseName}%'
       </if>
       <if test="courseMessage != null" >
-        and course_message = #{course_message,jdbcType=VARCHAR}
+        and course_message = ${courseMessage}
       </if>
+  </where>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from course
@@ -45,13 +46,13 @@
   </delete>
   <insert id="insert" parameterType="sy.model.Course" >
     insert into course (course_id, course_name, course_message, 
-      user_id, start_datetime, end_datetime, 
-      max_count, now_count, email, 
-      phone)
+      course_address, user_id, start_datetime, 
+      end_datetime, max_count, now_count, 
+      email, phone)
     values (#{courseId,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{courseMessage,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=VARCHAR}, #{startDatetime,jdbcType=TIMESTAMP}, #{endDatetime,jdbcType=TIMESTAMP}, 
-      #{maxCount,jdbcType=INTEGER}, #{nowCount,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR})
+      #{courseAddress,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{startDatetime,jdbcType=TIMESTAMP}, 
+      #{endDatetime,jdbcType=TIMESTAMP}, #{maxCount,jdbcType=INTEGER}, #{nowCount,jdbcType=INTEGER}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="sy.model.Course" >
     insert into course
@@ -64,6 +65,9 @@
       </if>
       <if test="courseMessage != null" >
         course_message,
+      </if>
+      <if test="courseAddress != null" >
+        course_address,
       </if>
       <if test="userId != null" >
         user_id,
@@ -97,6 +101,9 @@
       <if test="courseMessage != null" >
         #{courseMessage,jdbcType=VARCHAR},
       </if>
+      <if test="courseAddress != null" >
+        #{courseAddress,jdbcType=VARCHAR},
+      </if>
       <if test="userId != null" >
         #{userId,jdbcType=VARCHAR},
       </if>
@@ -129,6 +136,9 @@
       <if test="courseMessage != null" >
         course_message = #{courseMessage,jdbcType=VARCHAR},
       </if>
+      <if test="courseAddress != null" >
+        course_address = #{courseAddress,jdbcType=VARCHAR},
+      </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=VARCHAR},
       </if>
@@ -157,6 +167,7 @@
     update course
     set course_name = #{courseName,jdbcType=VARCHAR},
       course_message = #{courseMessage,jdbcType=VARCHAR},
+      course_address = #{courseAddress,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=VARCHAR},
       start_datetime = #{startDatetime,jdbcType=TIMESTAMP},
       end_datetime = #{endDatetime,jdbcType=TIMESTAMP},

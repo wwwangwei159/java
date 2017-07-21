@@ -2,6 +2,7 @@ package sy.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,8 +69,12 @@ public class ReserveCourseController extends AbstractController {
 	
 	
 	@RequestMapping("/loadCourse")
-	public ModelAndView loadCourse(HttpServletRequest request,HttpServletResponse response) {
-		List<Course>  list = reserveCourseService.getCourse(new Course());
+	public ModelAndView loadCourse(@ModelAttribute("form") Course course,HttpServletRequest request,HttpServletResponse response) {
+		System.out.println(course.getCourseName());
+		List<Course>  list = reserveCourseService.getCourse(course);
+		if(list==null){
+			list = new ArrayList<Course>();
+		}
 		response.setContentType("text/plain");  
         response.setHeader("Pragma", "No-cache");  
         response.setHeader("Cache-Control", "no-cache");  

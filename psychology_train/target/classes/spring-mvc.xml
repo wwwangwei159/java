@@ -31,7 +31,21 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
-
+	
+	<!-- 登录拦截器 -->
+     <mvc:interceptors>   
+      <!-- 配置登陆拦截器 --> 
+      <!-- /** 表示所有的url，包括子url路径 -->   
+      <mvc:interceptor>
+          <mvc:mapping path="/user/admin*"/>
+          <bean class="sy.filter.LoginHandlerIntercepter"></bean>  
+      </mvc:interceptor>  
+      <!--  
+      ..... 
+       
+       -->  
+ 	</mvc:interceptors>
+     
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding">
 			<value>UTF-8</value>
