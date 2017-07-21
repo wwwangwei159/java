@@ -35,7 +35,7 @@ public class TestMybatis {
 
 	@Test
 	public void test1() {
-		User u = userService.getUserById("1");
+		User u = userService.getUserById("233");
 		logger.info("result............"+JSON.toJSONStringWithDateFormat(u, "yyyy-MM-dd HH:mm:ss"));
 	}
 	
@@ -46,6 +46,27 @@ public class TestMybatis {
 		user.setName("test name2");
 		int i = userService.insert(user);
 		logger.info("result............"+i);
+	}
+	
+	@Test
+	public void insertTest3() {
+		User user = new User();
+		user.setUserId("233");
+		user.setPhone("1232344");
+		user.setMobile("345");
+		user.setPwd("123");
+		int i = userService.insert(user);
+		logger.info("result............"+i);
+	}
+	
+	@Test
+	public void loginin1() {
+		User s = new User();
+		//s.setPhone("1232344");
+		s.setMobile("345");
+		s.setPwd("123");
+		s = userService.login(s);
+		logger.info("result............"+JSON.toJSONStringWithDateFormat(s, "yyyy-MM-dd HH:mm:ss"));
 	}
 
 	@Test
