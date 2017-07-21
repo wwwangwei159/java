@@ -248,7 +248,7 @@
                 <li>
                 <div class="cd-full-width">
                     <div class="container-fluid js-tm-page-content tm-page-pad" data-page-no="5">
-                   		<%@ include file="/message/messIndex.jsp" %>
+                   		<%@ include file="/message/messInsert.jsp" %>
                    </div>
                         
                 </div> <!-- .cd-full-width -->
@@ -376,7 +376,9 @@
                 Everything is loaded including images.
             */
             $(window).load(function(){
-
+        	    //显示大屏幕,实现F11功能
+            	//var WsShell = new ActiveXObject('WScript.Shell'); 
+        	    //WsShell.SendKeys('{F11}'); 
                 adjustHeightOfPage(1); // Adjust page height
 
                 /* Gallery One pop up
