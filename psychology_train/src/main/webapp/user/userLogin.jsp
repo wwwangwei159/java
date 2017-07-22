@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +12,8 @@
     <%@ include file="/framework/commonjsadmin2.jsp" %>
 	<script type="text/javascript">
 	$(function(){
-		alert("登录页面");
+		//alert("登录页面");
+		
 	});
 	</script>
   
@@ -42,6 +44,9 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
+                                <c:if test="${login!=null&&login=='fail'}">
+								 <h3 class="panel-title"><font color="red" >登陆失败,情重新输入账号或密码!</font></h3>
+								</c:if>
                                 <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
                             </fieldset>
                         </form>

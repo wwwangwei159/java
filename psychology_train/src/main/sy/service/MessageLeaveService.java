@@ -11,6 +11,8 @@ public interface MessageLeaveService {
 	
 	int insert(MessageLeave record);
 	
+	int delete(MessageLeave record);
+	
 	public List<MessageLeave> getMessage(MessageLeave record);
 
 }

@@ -33,3 +33,6 @@
 <script src="${webRoot}/demo/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="${webRoot}/demo/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="${webRoot}/demo/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+<!-- common js for all the ajax or div html -->
+<script src="${webRoot}/framework/js/common.js"></script>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page language="java" import="java.util.*" %>
-<%@ page language="java" import="sy.model.MessageLeave" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -10,13 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin管理</title>
-    <%@ include file="/framework/commonjsadmin2.jsp" %>
+    <%@ include file="/framework/commonjsadmin2.jsp"  %>
 	<script type="text/javascript">
 	    $(document).ready(function() {
 	        $('#dataTables-example').DataTable({
 	            responsive: true
 	        });
 	    });
+	    
+	    function deleteById(id){
+	    	var json = common.ajax("${webRoot}/mess/delete.do","messId="+id);
+	    	if(json.success){
+	    		alert("删除成功!");
+	    		window.location.href="${webRoot}/mess/index.do";
+	    	}
+	    	
+	    }
+	    
 	</script>
   
 </head>
@@ -24,7 +33,7 @@
 
 <body>    
 	<div>
-		<%@ include file="/framework/mainmenu.jsp" %>
+		<%@ include file="/framework/mainmenu.jsp"  %>
 	 
      <div id="wrapper">
 		
@@ -56,19 +65,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <%  List<MessageLeave> list  = (List<MessageLeave>)request.getAttribute("list");
-                                for (Iterator<MessageLeave> it = list.iterator(); it.hasNext();) {
-                                	MessageLeave mess = it.next();
-                                	%>
+                                 <c:forEach var="mess"  items="${list}">
                                 	<tr class="odd gradeX">
-                                    <td><%=mess.getMessage() %></td>
-                                    <td class="center"><%=mess.getReserveName() %></td>
-                                    <td class="center"><%=mess.getPhone() %></td>
-                                    <td><%=mess.getLeaveDatetime() %></td>
-                                    <td><%=mess.getEmail() %></td>
-                                    <td class="center"><button type="button" class="btn btn-warning">删除</button></td>
+                                    <td>${mess.message}</td>
+                                    <td class="center">${mess.reserveName}</td>
+                                    <td class="center">${mess.phone}</td>
+                                    <td>${mess.leaveDatetime}</td>
+                                    <td>${mess.email}</td>
+                                    <td class="center"><button type="button"  onclick="deleteById('${mess.messId}')" class="btn btn-warning">删除</button></td>
                                		 </tr>
-                                <%} %>
+                               	</c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -86,6 +92,5 @@
     <!-- /#wrapper -->
   </div>  
 </body>
-
 
 </html>

@@ -77,9 +77,9 @@ public class UserController extends AbstractController {
 		if(user!=null){
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-	        model.put("user",user);
 	        return this.admin(request);
 		}else{
+			model.put("login","fail");
 			return new ModelAndView("user/userLogin",model);
 		}
        
