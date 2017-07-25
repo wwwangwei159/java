@@ -39,7 +39,6 @@ public class MessageLeaveServiceImpl implements MessageLeaveService {
 		return messageLeaveMapper.getList(record);
 	}
 
-	@Override
 	public int delete(MessageLeave record) {
 		// TODO Auto-generated method stub
 		return messageLeaveMapper.updateByPrimaryKeySelective(record);
