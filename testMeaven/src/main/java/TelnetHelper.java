@@ -139,7 +139,7 @@ public class TelnetHelper {
 	}
 
 	public static void main(String[] args) {
-		TelnetHelper telnetHelper = new TelnetHelper("gis.synnex.org", "applog","synnex2k3");
+		TelnetHelper telnetHelper = new TelnetHelper("", "","");
 		try {
 			telnetHelper.connect();
 			String[] cmds = new String[]{"ls","pwd"};
