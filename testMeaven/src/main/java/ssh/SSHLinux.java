@@ -26,7 +26,7 @@ public class SSHLinux {
 		exeCommand(host,port,user,password);
 		String command = "cd projects";
 		exec(command);
-		command = "ll /udata/apps/cronfit/projects";
+		command = "ll projects";
 		String res = exec(command);
 		System.out.println(res);
 		
