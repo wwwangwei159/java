@@ -19,10 +19,10 @@ public class SSHLinux {
 	 
 	public static void main(String[] args) throws IOException, JSchException {
 		// TODO Auto-generated method stub
-		String host = "cron-uat.hyvesolutions.org";
+		String host = "777";
 		int port = 22;
-		String user = "cronfit";
-		String password = "synnex";
+		String user = "";
+		String password = "";
 		exeCommand(host,port,user,password);
 		String command = "cd projects";
 		exec(command);
