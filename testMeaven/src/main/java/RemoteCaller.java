@@ -10,7 +10,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-//import com.synnex.biz2.part.maintain.ejb.PoRecService;
 
 
 public class RemoteCaller {
@@ -28,7 +27,7 @@ public class RemoteCaller {
 	            Properties props = new Properties();
 	            props.setProperty("java.naming.factory.initial",
 	                    "org.jnp.interfaces.NamingContextFactory");
-	            props.setProperty("java.naming.provider.url", "jnp://testmycis.synnex.org:1099");
+	            props.setProperty("java.naming.provider.url", "jnp://server_url:1099");
 	            props.setProperty("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
 	            ctx = new InitialContext(props);
 	            service = (PoRecService) ctx.lookup(PoRecService.REMOTE);
@@ -39,10 +38,10 @@ public class RemoteCaller {
 	    	// * jboss6 test
     	      Properties props = new Properties(); 
               //props.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory"); 
-              props.put(Context.PROVIDER_URL, "remote://ton-vm-uat-jboss6-mycis-g1i1.synnex.org:4447"); 
-              props.put(Context.SECURITY_AUTHENTICATION,"simple"); 
-              props.put(Context.SECURITY_PRINCIPAL, "remoteCaller"); 
-    	      props.put(Context.SECURITY_CREDENTIALS, "synnex@2"); 
+              props.put(Context.PROVIDER_URL, "remote://server_url:4447");
+              props.put(Context.SECURITY_AUTHENTICATION,"username1");
+              props.put(Context.SECURITY_PRINCIPAL, "username2");
+    	      props.put(Context.SECURITY_CREDENTIALS, "password");
     	      props.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory"); 
 	          props.put("jboss.naming.client.ejb.context", Boolean.valueOf(true)); 
     	        
