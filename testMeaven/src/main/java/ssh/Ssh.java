@@ -518,7 +518,7 @@ public class Ssh {
         }
 		
 		
-		/*Ssh ssh = new Ssh("cron-uat.hyvesolutions.org", 22, "cronfit", "synnex");
+		/*Ssh ssh = new Ssh("servername", 22, "username", "password");
 		try {
 			ssh.connect();
 		} catch (JSchException e) {
